@@ -3,8 +3,40 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>homework js</title>
+    <style>
+        #inputDiv {
+            text-align: center;
+        }
+
+        .phrase {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>git page</h1>
+    <div id="inputDiv">
+        <input id="input">
+    </div>
+    <hr>
+    <div id="content"></div>
+
+
+
+<script src="libs/jquery.min.js"></script>
+<script>
+    var test = ["wrq java ewrqrgsd ewq trewqtdsf tregw wer ewq sdfw",
+    "qwer gfr4 gewf qwsd qherg java kwrqjkwe obfde java",
+    "qoudvxc weroiuwe java weoiru pvopiewf podsifwe",
+    "pobvfmgfdklj weorisal jiowqnjkcxh bvuyfvtwfe java"];
+
+    test.forEach(function(phrase) {
+        $("#content").append('<p class="phrase">' + phrase + '</p> <hr>');
+    });
+
+    $("#input").bind("input propertychange",function(){
+        var currentValue = $(this).val();
+        $("div:contains("+ currentValue+")").css("border", "4px solid");
+    });
+</script>
 </body>
 </html>
