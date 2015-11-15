@@ -6,10 +6,31 @@
     <style>
         #inputDiv {
             text-align: center;
+            background-color: ghostwhite;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        #input {
+            width: 90%;
+            height: 35px;
+            border-color: skyblue;
+            margin: 35px 0;
+        }
+
+        #content {
+            width: 80%;
+            margin: 0 auto;
         }
 
         .phrase {
             text-align: center;
+            font-size: x-large;
+            font-family: 'Microsoft YaHei';
+        }
+
+        .highlight {
+            background-color: yellow;
         }
     </style>
 </head>
@@ -17,7 +38,6 @@
     <div id="inputDiv">
         <input id="input">
     </div>
-    <hr>
     <div id="content"></div>
 
 
@@ -35,8 +55,20 @@
 
     $("#input").bind("input propertychange",function(){
         var currentValue = $(this).val();
-        $("div:contains("+ currentValue+")").css("border", "4px solid");
+        $("p").each(function() {
+
+            var originalText = $(this).html()
+                    .replace('<span class="highlight">', "")
+                    .replace("</span>", "");
+            $(this).html(originalText);
+            var highlightedText = $(this).html()
+                    .replace(currentValue, "<span class='highlight'>" + currentValue + "</span>");
+            $(this).html(highlightedText);
+        });
     });
+
+
+
 </script>
 </body>
 </html>
