@@ -55,14 +55,16 @@
 
     $("#input").bind("input propertychange",function(){
         var currentValue = $(this).val();
+        var re = new RegExp(currentValue, "ig");
+        var re2 = new RegExp('<span class="highlight">', "g");
+        var re3 = new RegExp('</span>', "g");
         $("p").each(function() {
-
             var originalText = $(this).html()
-                    .replace('<span class="highlight">', "")
-                    .replace("</span>", "");
+                    .replace(re2, "")
+                    .replace(re3, "");
             $(this).html(originalText);
             var highlightedText = $(this).html()
-                    .replace(currentValue, "<span class='highlight'>" + currentValue + "</span>");
+                    .replace(re, '<span class="highlight">' + currentValue + '</span>');
             $(this).html(highlightedText);
         });
     });
