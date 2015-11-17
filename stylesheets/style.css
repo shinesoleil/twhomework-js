@@ -1,0 +1,50 @@
+#inputDiv {
+    text-align: center;
+    background-color: ghostwhite;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#input {
+    width: 95%;
+    height: 35px;
+    border-color: skyblue;
+    margin: 35px 0;
+}
+
+#content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.phrase {
+    width: 80%;
+    text-align: left;
+    color: #6A6B6B;
+    font-size: x-large;
+    font-family: 'Microsoft YaHei';
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+hr {
+    border: none;
+    border-top: 1px dashed #6A6B6B;
+    opacity: 0.3;
+}
+
+.timestamp {
+    font-size: large;
+    color: #6A6B6B;
+    opacity: 0.4;
+    font-family: 'Microsoft YaHei';
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.highlight {
+    background-color: yellow;
+}

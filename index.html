@@ -3,36 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>homework js</title>
-    <style>
-        #inputDiv {
-            text-align: center;
-            background-color: ghostwhite;
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        #input {
-            width: 90%;
-            height: 35px;
-            border-color: skyblue;
-            margin: 35px 0;
-        }
-
-        #content {
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .phrase {
-            text-align: center;
-            font-size: x-large;
-            font-family: 'Microsoft YaHei';
-        }
-
-        .highlight {
-            background-color: yellow;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css"  href="stylesheets/style.css">
 </head>
 <body>
     <div id="inputDiv">
@@ -44,14 +15,28 @@
 
 <script src="libs/jquery.min.js"></script>
 <script>
-    var test = ["wrq java ewrqrgsd ewq trewqtdsf tregw wer ewq sdfw",
-    "qwer gfr4 gewf qwsd qherg java kwrqjkwe obfde java",
-    "qoudvxc weroiuwe java weoiru pvopiewf podsifwe",
-    "pobvfmgfdklj weorisal jiowqnjkcxh bvuyfvtwfe java"];
-
-    test.forEach(function(phrase) {
-        $("#content").append('<p class="phrase">' + phrase + '</p> <hr>');
+    function convertTime(milliseconds) {
+        var d = new Date();
+        d.setTime(milliseconds);
+        return d.getFullYear() + "-" + (d.getMonth()+1) + "-" + (d.getDate()+1);
+    }
+    $.ajaxSettings.async = false;
+    var bookmarks;
+    $.getJSON("./bookmarks.json", function(data) {
+        bookmarks = data;
+        console.log(bookmarks);
     });
+
+    bookmarks.forEach(function(element) {
+        $("#content")
+                .append('<div>' +
+                '<p class="phrase">' + element.title + '</p>' +
+                '<span class="timestamp">Created @ ' + convertTime(element.created) +'</span>' +
+                '</div>' +
+                '<hr>');
+    });
+
+
 
     $("#input").bind("input propertychange",function(){
         var currentValue = $(this).val();
