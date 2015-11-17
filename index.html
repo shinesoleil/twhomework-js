@@ -11,51 +11,7 @@
     </div>
     <div id="content"></div>
 
-
-
 <script src="libs/jquery.min.js"></script>
-<script>
-    function convertTime(milliseconds) {
-        var d = new Date();
-        d.setTime(milliseconds);
-        return d.getFullYear() + "-" + (d.getMonth()+1) + "-" + (d.getDate()+1);
-    }
-    $.ajaxSettings.async = false;
-    var bookmarks;
-    $.getJSON("./bookmarks.json", function(data) {
-        bookmarks = data;
-        console.log(bookmarks);
-    });
-
-    bookmarks.forEach(function(element) {
-        $("#content")
-                .append('<div>' +
-                '<p class="phrase">' + element.title + '</p>' +
-                '<span class="timestamp">Created @ ' + convertTime(element.created) +'</span>' +
-                '</div>' +
-                '<hr>');
-    });
-
-
-
-    $("#input").bind("input propertychange",function(){
-        var currentValue = $(this).val();
-        var re = new RegExp(currentValue, "ig");
-        var re2 = new RegExp('<span class="highlight">', "g");
-        var re3 = new RegExp('</span>', "g");
-        $("p").each(function() {
-            var originalText = $(this).html()
-                    .replace(re2, "")
-                    .replace(re3, "");
-            $(this).html(originalText);
-            var highlightedText = $(this).html()
-                    .replace(re, '<span class="highlight">' + currentValue + '</span>');
-            $(this).html(highlightedText);
-        });
-    });
-
-
-
-</script>
+<script src="src/bookmarks.js"></script>
 </body>
 </html>
