@@ -9,7 +9,7 @@ function filterBookmarks(bookmarks) {
 
         function appendToPage(article) {
             var highlightedText = article.title.replace(regExp, '<span class="highlight">$&</span>');
-            renderArticle(highlightedText, convertTime(article.created));
+            renderArticle(highlightedText, convertTime(article.created + "000"));
         }
 
         $("#content").html(""); //clear all contents
