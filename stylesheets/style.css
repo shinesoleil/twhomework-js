@@ -10,6 +10,8 @@
     height: 35px;
     border-color: skyblue;
     margin: 35px 0;
+    font-size: 25px;
+    font-family: 'Microsoft YaHei';
 }
 
 #content {

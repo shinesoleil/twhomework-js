@@ -16,7 +16,7 @@ bookmarks.forEach(function(element) {
     $("#content")
         .append('<div>' +
         '<p class="phrase">' + element.title + '</p>' +
-        '<span class="timestamp">Created @ ' + convertTime(element.created) +'</span>' +
+        '<span class="timestamp">Created @ ' + convertTime(element.created + "000") +'</span>' +
         '</div>' +
         '<hr>');
 });
